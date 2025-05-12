@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class Play : MonoBehaviour
+public class play : MonoBehaviour
 {
     private int numero = 0;
-    public float velocidade = 40
+    public float velocidade = 40;
 
     void Start()
     {
@@ -14,19 +14,21 @@ public class Play : MonoBehaviour
     void Update()
     {
         //debug.log(numero0;
-        //numero = numero + 1;
+        //numero = numero  + 1;
 
         if (Input.GetKey(KeyCode.A))
         {
-            GameObject.transform.position += new Vector3(velocidade, 0, 0);
+            gameObject.transform.position += new Vector3(- *Time.deltaTime, 0, 0);
         }
 
-
+        if (Input.GetKey(KeyCode.D))
+            
+            gameObject.transform.position += new Vector3(+ Time.deltaTime, 0, 0);
+            
+    }
     }
     
-    {
-         if (Input.GetKey(KeyCode.D))
-    }
+    
     
 
-}
+
