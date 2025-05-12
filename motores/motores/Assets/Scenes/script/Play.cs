@@ -23,8 +23,10 @@ public class Play : MonoBehaviour
 
 
     }
-}
-
-if (Input.GetKey(KeyCode.D))
+    
+    {
+         if (Input.GetKey(KeyCode.D))
+    }
+    
 
 }
