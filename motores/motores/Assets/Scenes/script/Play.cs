@@ -1,34 +1,38 @@
 using UnityEngine;
-
-public class play : MonoBehaviour
-{
-    private int numero = 0;
-    public float velocidade = 40;
-
-    void Start()
+    
+    public class Play : MonoBehaviour
     {
-        numero = 0;
-    }
-
-
-    void Update()
-    {
-        //debug.log(numero0;
-        //numero = numero  + 1;
-
-        if (Input.GetKey(KeyCode.A))
+        private int _numero = 0; 
+        public float velocidade = 5f; 
+    
+        void Start()
         {
-            gameObject.transform.position += new Vector3(- *Time.deltaTime, 0, 0);
+            _numero = 0;
         }
-
-        if (Input.GetKey(KeyCode.D))
+    
+        void Update()
+        {
             
-            gameObject.transform.position += new Vector3(+ Time.deltaTime, 0, 0);
+    
+            float movimento = 0;
+    
+            if (Input.GetKey(KeyCode.A))
+            {
+                movimento -= 1;
+            }
+    
+            if (Input.GetKey(KeyCode.D))
+            {
+                movimento += 1;
+            }
+    
             
-    }
+            transform.position += new Vector3(movimento, 0, 0) * velocidade * Time.deltaTime;
+        }
     }
     
-    
+        
+        
     
 
 
