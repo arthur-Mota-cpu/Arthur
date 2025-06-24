@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      png-clipart-pokemon-pokemon-ash_0: 7848534457010580954
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

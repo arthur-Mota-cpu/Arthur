@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      png-transparent-pokeball-illustration-ash-ketchum-pokeball-s-image-file-formats-rim-pokemon-removebg-preview_0: -8849422525654810546
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
