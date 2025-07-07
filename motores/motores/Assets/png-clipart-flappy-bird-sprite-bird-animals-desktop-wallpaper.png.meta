@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      png-clipart-flappy-bird-sprite-bird-animals-desktop-wallpaper_0: -4485895066525355853
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
