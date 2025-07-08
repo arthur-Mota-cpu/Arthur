@@ -1,54 +1,69 @@
+using System;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class Player : MonoBehaviour
 {
-    public float speed = 5f;
-    public float jumpForce = 7f;
-
+    
+    public float velocidade = 40;
+    public float forcaDoPulo = 4;
+    
+    private bool noChao = false;
+    private bool andando = false;
+    
+    private SpriteRenderer sprite;
     private Rigidbody2D rb;
-    private bool isGrounded;
+    private Animator animator;
+    
+       void Start()
+       {
+           sprite = GetComponent<SpriteRenderer>();
+           rb = GetComponent<Rigidbody2D>();
+           animator = GetComponent<Animator>();
+       }
 
-    public Transform groundCheck;
-    public float checkRadius = 0.2f;
-    public LayerMask groundLayer;
-
-    private float moveInput;
-    private bool facingRight = true;
-    public float rotationSpeed = 10f;
-
-    void Start()
+       
+   void Update()
     {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
-    void Update()
-    {
-        moveInput = Input.GetAxisRaw("Horizontal");
+        andando = false;
         
-        // Movimento horizontal
-        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
-
-        // Verifica se está no chão
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
-
-        // Pulo
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKey(KeyCode.A))
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            gameObject.transform.position += new Vector3(-velocidade * Time.deltaTime,0,0);
+            sprite.flipX = true;
+            andando = true;
+        }
+        
+        if (Input.GetKey(KeyCode.D))
+        {
+            gameObject.transform.position += new Vector3(velocidade * Time.deltaTime,0,0);
+            sprite.flipX = false;
+            andando = true;
         }
 
-        // Girar suavemente
-        RotateCharacter(moveInput);
+        if (Input.GetKeyDown(KeyCode.Space) && noChao == true)
+        {
+            rb.AddForce(new Vector2(0,forcaDoPulo), ForceMode2D.Impulse);
+        }
+
+        animator.SetBool("Andando",andando);
+        animator.SetBool("Pulo",!noChao);
+        
     }
 
-    void RotateCharacter(float direction)
+    void OnCollisionEnter2D(Collision2D colisao)
     {
-        if (direction == 0) return;
+        //if (colisao.gameObject.tag == "Chao")
+        if(colisao.gameObject.CompareTag("Chao"))
+        {
+            noChao = true;
+        }
+    }
 
-        // Define direção alvo de rotação
-        float targetYRotation = direction > 0 ? 0f : 180f;
-
-        Quaternion targetRotation = Quaternion.Euler(0, targetYRotation, 0);
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+    void OnCollisionExit2D(Collision2D colisao)
+    {
+        if(colisao.gameObject.CompareTag("Chao"))
+        {
+            noChao = false;
+        }
     }
 }
