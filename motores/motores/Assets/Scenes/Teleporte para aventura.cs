@@ -7,7 +7,7 @@ public class Porta : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            SceneManager.LoadScene("Continua 7");
+            SceneManager.LoadScene("Continua 6");
         }
     }
 }
