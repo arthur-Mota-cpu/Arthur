@@ -78,6 +78,7 @@ public class Player : MonoBehaviour
         {
             Dano = true;
             animator.SetBool("Dano", true);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             rb.linearVelocity = Vector2.zero;
             
         }
