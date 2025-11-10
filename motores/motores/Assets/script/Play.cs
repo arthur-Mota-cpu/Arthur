@@ -74,7 +74,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("dano"))
+        if (other.CompareTag("Perigo"))
         {
             Dano = true;
             animator.SetBool("Dano", true);
